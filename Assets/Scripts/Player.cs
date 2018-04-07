@@ -10,9 +10,11 @@ public enum PlayerState
 public class Player : MonoBehaviour
 {
     private const float OptimalDeltaTime = 0.2f;
-    private const float StepTime = 0.1f; //допустимая погрешность для игрока
-    private const float BaseSpeed = 0.3f;
+    private const float StepTime = 0.2f; //допустимая погрешность для игрока
+    private const float BaseSpeed = 0.4f;
     private const float SlowSown = 0.3f;
+    private const float JumpForce = 12;
+    private const float Gravity = 60;
 
     public Sprite[] sprites = new Sprite[3];
     private SpriteRenderer spriteRenterer;
@@ -22,15 +24,34 @@ public class Player : MonoBehaviour
     public KeyCode rbName;
 
     private float timer;
-    private float slowdownTimer;
     private PlayerState state = PlayerState.None;
 
     public float PositionX { get; private set; }
+    private bool runDisabled = false;
+    //public float PositionY { get; private set; }
+    private float vSpeed;
+    public bool IsJumping { get; private set; }
+    private float floor;
+
+    public void DisableRun(float time)
+    {
+        StartCoroutine(DisableRunCorutine(time));
+    }
+
+    private IEnumerator DisableRunCorutine(float time)
+    {
+        runDisabled = true;
+        yield return new WaitForSeconds(time);
+        runDisabled = false;
+    }
 
     private void Start()
     {
+        floor = transform.position.y;
         spriteRenterer = GetComponent<SpriteRenderer>();
         currentSprite = ChangeSprite();
+        StartCoroutine(SlowDown());
+        PositionX = transform.position.x;
     }
 
     private void Update()
@@ -41,40 +62,47 @@ public class Player : MonoBehaviour
            Time.deltaTime);
     }
 
-    public void Step()
+    private void Step()
     {
-        if (Input.GetKeyDown(lbName))
+        if (Input.GetKeyDown(lbName) && Input.GetKeyDown(rbName))
         {
-            //Debug.Log("Try left step");
+            if(!IsJumping)
+            {
+                vSpeed = JumpForce;
+                IsJumping = true;
+            }
+        }
+        else if (Input.GetKeyDown(lbName))
+        {
             switch (state)
             {
                 case PlayerState.LeftStep:
                     //Мы нажали кнопку дважды
                     break;
                 case PlayerState.RightStep:
-                    Debug.Log(timer);
                     PositionX += CalculateAcseleration(timer);
                     timer = 0;
                     state = PlayerState.LeftStep;
+                    currentSprite.MoveNext();
+                    spriteRenterer.sprite = currentSprite.Current;
                     break;
                 case PlayerState.None:
                     state = PlayerState.LeftStep;
                     timer = 0;
                     break;
             }
-            currentSprite.MoveNext();
-            spriteRenterer.sprite = currentSprite.Current;
+            
         }
         else if (Input.GetKeyDown(rbName))
         {
-            //Debug.Log("Try right step");
             switch (state)
             {
                 case PlayerState.LeftStep:
-                    Debug.Log(timer);
                     PositionX += CalculateAcseleration(timer);
                     timer = 0;
                     state = PlayerState.RightStep;
+                    currentSprite.MoveNext();
+                    spriteRenterer.sprite = currentSprite.Current;
                     break;
                 case PlayerState.RightStep:
                     //Мы нажали кнопку дважды
@@ -84,18 +112,29 @@ public class Player : MonoBehaviour
                     timer = 0;
                     break;
             }
-            currentSprite.MoveNext();
-            spriteRenterer.sprite = currentSprite.Current;
         }
-        
         if (state != PlayerState.None)
             timer += Time.deltaTime;
-       if (slowdownTimer > OptimalDeltaTime)
+        if (IsJumping)
+        {
+            transform.Translate(new Vector2(0, vSpeed * Time.deltaTime));
+            vSpeed -= Gravity * Time.deltaTime;
+            if (transform.position.y < floor)
+            {
+                transform.position = new Vector2(transform.position.x, floor);
+                IsJumping = false;
+            }
+        }
+        
+    }
+
+    private IEnumerator SlowDown()
+    {
+        while (true)
         {
             PositionX -= SlowSown;
-            slowdownTimer = 0;
+            yield return new WaitForSeconds(OptimalDeltaTime);
         }
-        slowdownTimer += Time.deltaTime;
     }
 
     private IEnumerator<Sprite> ChangeSprite()
@@ -111,6 +150,7 @@ public class Player : MonoBehaviour
      
     private float CalculateAcseleration(float deltaTime)
     {
+        if (runDisabled) return 0;
         float x = Mathf.Abs(deltaTime - OptimalDeltaTime);
         var diviation = x / StepTime;
         if (diviation == 0) return BaseSpeed;

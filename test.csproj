@@ -241,9 +241,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Cactus.cs" />
+    <Compile Include="Assets\Scripts\CactusSpawner.cs" />
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerStatisticController.cs" />
+    <Compile Include="Assets\Scripts\ResultTableController.cs" />
     <Compile Include="Assets\Scripts\RunnerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

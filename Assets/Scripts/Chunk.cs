@@ -12,7 +12,7 @@ public class Chunk : MonoBehaviour {
     private void Update()
     {
         transform.Translate(new Vector2(-_moveSpeed * Time.deltaTime, 0));
-        if (transform.position.x < -1.8f)
+        if (transform.position.x < _deleteEge)
             BecameInvisible(gameObject, null);
     }
 }

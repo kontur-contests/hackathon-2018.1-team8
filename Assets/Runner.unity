@@ -165,7 +165,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 2.2165964
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -221,7 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4dd270f09a5a94f83434a3197673bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chunkPrefab: {fileID: 400004, guid: 57977547c59abb546bbb1501e3c417db, type: 2}
+  _chunkPrefab: {fileID: 4563719959636406, guid: 493a990af76fa4f4e94fe5022df6e46c,
+    type: 2}
 --- !u!4 &1817934346
 Transform:
   m_ObjectHideFlags: 0

@@ -51,12 +51,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Cactus.cs" />
+     <Compile Include="Assets\Scripts\CactusSpawner.cs" />
      <Compile Include="Assets\Scripts\Chunk.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\PlayerAudioSource.cs" />
      <Compile Include="Assets\Scripts\PlayerStatisticController.cs" />
      <Compile Include="Assets\Scripts\ResultTableController.cs" />
      <Compile Include="Assets\Scripts\RunnerController.cs" />
+     <Compile Include="Assets\Scripts\SceneController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

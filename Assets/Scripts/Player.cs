@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenterer;
     private IEnumerator<Sprite> currentSprite;
     private PlayerAudioSource audioSource;
+    public Vector3 cacheStartPosition;
 
     public KeyCode lbName;
     public KeyCode rbName;
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
         currentSprite = ChangeSprite();
         StartCoroutine(SlowDown());
         PositionX = transform.position.x;
+        cacheStartPosition = this.transform.position;
         audioSource = transform.Find("PlayerAudioSource").GetComponent<PlayerAudioSource>();
     }
 
@@ -63,6 +65,15 @@ public class Player : MonoBehaviour
         transform.position = Vector2.Lerp(transform.position,
            new Vector2(PositionX, transform.position.y),
            Time.deltaTime);
+    }
+
+    public void Reset() {
+        this.transform.SetPositionAndRotation(cacheStartPosition, Quaternion.identity);
+        timer = 0;
+        state = PlayerState.None;
+        PositionX = cacheStartPosition.x;
+        StartCoroutine(SlowDown());
+        IsJumping = false;
     }
 
     private void Step()

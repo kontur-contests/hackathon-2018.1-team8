@@ -9,12 +9,11 @@ public class ResultTableController : MonoBehaviour {
 	// Use this for initialization
 	public GameObject[] names = new GameObject[4];
 	public GameObject[] scores = new GameObject[4];
-	public PlayerInfo[] info = new PlayerInfo[4];
+	public int[] results = new int[4]; //очки пользователей по окончанию забега
 	public void ShowStatistics() {
-		info.Reverse();
-		for(int i = 0; i < info.Length; i++) {
-			names[i].GetComponent<Text>().text = info[i].name;
-			scores[i].GetComponent<Text>().text = info[i].score.ToString();
+		for(int i = 0; i < results.Length; i++) {
+			names[i].GetComponent<Text>().text = "Player " + i;
+			scores[i].GetComponent<Text>().text = results[i].ToString();
 		}
 	}  
 }

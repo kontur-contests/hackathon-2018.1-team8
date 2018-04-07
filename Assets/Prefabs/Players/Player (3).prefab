@@ -168,6 +168,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 84b801db36083d64180b7ccc54a06de6, type: 3}
   - {fileID: 21300000, guid: 86ef428216548a54784f9f660a007bb7, type: 3}
   - {fileID: 21300000, guid: 17620fe2acdd65441a345d1e2fc55ef7, type: 3}
+  cacheStartPosition: {x: 0, y: 0, z: 0}
   lbName: 276
   rbName: 275
 --- !u!114 &114744054294993666
@@ -201,7 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4cac3b9f64204ba495bccc7b5267f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Player 4
+  playerName: 
+  id: 3
+  info:
+    name: undefined
+    score: 0
 --- !u!212 &212513070348191396
 SpriteRenderer:
   m_ObjectHideFlags: 1

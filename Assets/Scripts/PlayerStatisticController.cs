@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class PlayerInfo {
 	public string name;
 	public int score;
@@ -18,13 +19,14 @@ public class PlayerStatisticController : MonoBehaviour {
 	
     public EventHandler onDie;
     public EventHandler onWin;
-	public string name;
+	public string playerName;
+	public int id;
 
-	public PlayerInfo info = new PlayerInfo("undefined", 0);
+	public PlayerInfo info;
 	
 	// Update is called once per frame
 	void Start() {
-		info = new PlayerInfo(name, 0);
+		info = new PlayerInfo(playerName, 0);
 	}
 	void Update () {
         if (transform.position.x < -5f)

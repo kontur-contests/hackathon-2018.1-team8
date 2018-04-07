@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class GameController : MonoBehaviour {
     public RunnerController trackController;
     public GameObject resultTable;
     public List<Player> players = new List<Player>();
-    public PlayerInfo[] stat = new PlayerInfo[4];
+    public int[] userScores = new int[4];
     public Canvas startMenu;
     public Canvas finishMenu;
 
@@ -29,17 +30,42 @@ public class GameController : MonoBehaviour {
         if (startMenu == null) return;
         if (finishMenu == null) return;
         Time.timeScale = 0;
-        finishMenu.gameObject.SetActive(false);
-        foreach (Player player in players) {
-            player.gameObject.GetComponent<PlayerStatisticController>().onDie += AddDeadPlayerToStat;
-            player.gameObject.GetComponent<PlayerStatisticController>().onWin += AddWinPlayerToStat;
-        }
+        InitPlayers();
 	}
+
+    void InitPlayers() {
+        players = GameObject.FindGameObjectsWithTag("Playable")
+            .Select(pgo => pgo.GetComponent<Player>())
+            .ToList();
+        foreach (Player player in players) {
+            var statController = player.gameObject.GetComponent<PlayerStatisticController>();
+            statController.onDie += addPlayerToStat;
+            statController.onWin += addPlayerToStat;
+        }
+        finishMenu.gameObject.SetActive(false);
+    }
 
     public void StartNewGame()
     {
+        foreach (Player player in players) {
+            player.gameObject.SetActive(true);
+            player.Reset();
+        }
         Time.timeScale = 1;
         startMenu.gameObject.SetActive(false);
+        finishMenu.gameObject.SetActive(false);
+        InitPlayers();
+    }
+
+    public void RestartGame()
+    {
+        foreach (Player player in players) {
+            player.gameObject.SetActive(true);
+            player.Reset();
+        }
+        Time.timeScale = 1;
+        startMenu.gameObject.SetActive(false);
+        finishMenu.gameObject.SetActive(false);
     }
 
     private void ShowFinishMenu() {
@@ -47,8 +73,24 @@ public class GameController : MonoBehaviour {
         finishMenu.gameObject.SetActive(true);
     }
 
+    private void addPlayerToStat(object sender, EventArgs args) {
+        GameObject senderObject = (GameObject)sender;
+        senderObject.SetActive(false);
+        int leftPlayers = GameObject.FindGameObjectsWithTag("Playable").Count();
+        userScores[senderObject.GetComponent<PlayerStatisticController>().id] += 4 - leftPlayers;
+        Debug.Log(senderObject.GetComponent<PlayerStatisticController>().id);
+        if (leftPlayers == 1) {
+            GameObject winner = GameObject.FindGameObjectWithTag("Playable");
+            Debug.Log(winner.GetComponent<PlayerStatisticController>().id);
+            userScores[winner.GetComponent<PlayerStatisticController>().id] += 4;
+            ShowFinishMenu();
+            resultTable.GetComponent<ResultTableController>().results = userScores;
+            resultTable.GetComponent<ResultTableController>().ShowStatistics();
+        }
+    }
+
     
-    private void ShowTableResults() {
+    /*private void ShowTableResults() {
             resultTable.GetComponent<ResultTableController>().info = stat;
             resultTable.GetComponent<ResultTableController>().ShowStatistics();
             ShowFinishMenu();
@@ -85,25 +127,33 @@ public class GameController : MonoBehaviour {
 
     private void AddDeadManToStat(GameObject deadPlayer, int position) {
         PlayerStatisticController deadPlayerStat = deadPlayer.GetComponent<PlayerStatisticController>();
-        DestroyImmediate(deadPlayer);
-        stat[position] = new PlayerInfo(deadPlayerStat.info.name, deadPlayerStat.info.score + 4 - position);
+        deadPlayer.SetActive(false);
+        if (!userScores.ContainsKey(deadPlayerStat.id))
+            userScores.Add(deadPlayerStat.id, 4-position);
+        else 
+            userScores[deadPlayerStat.id] += (4-position);
+        stat[position] = new PlayerInfo(deadPlayerStat.info.name, userScores[deadPlayerStat.id]);
     }
 
     private void AddWinnerToStat(GameObject winner) {
-        PlayerStatisticController winnerStat = winner.GetComponent<PlayerStatisticController>();
-        DestroyImmediate(winner);
+        var winnerStat = winner.GetComponent<PlayerStatisticController>();
+        winner.SetActive(false);
         for (int i = 0; i < stat.Length; i++) {
             if (stat[i] != null)
                 continue;
             else {
-                stat[i] = new PlayerInfo(winnerStat.info.name, winnerStat.info.score + (4 -i));
+                if (!userScores.ContainsKey(winnerStat.id))
+                    userScores.Add(winnerStat.id, 4 - i);
+                else
+                    userScores[winnerStat.id] += 4 - i;
+                stat[i] = new PlayerInfo(winnerStat.info.name, userScores[winnerStat.id]);
                 break;
             }
         }
-    }
+    }*/
 	
 	// Update is called once per frame
-	void Update () {
-        
-	}
+	IEnumerator WaitForSecond() {
+        yield return new WaitForSeconds(1);
+    }
 }

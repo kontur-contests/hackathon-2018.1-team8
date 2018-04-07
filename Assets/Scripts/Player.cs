@@ -11,8 +11,12 @@ public class Player : MonoBehaviour
 {
     private const float OptimalDeltaTime = 0.2f;
     private const float StepTime = 0.1f; //допустимая погрешность для игрока
-    private const float BaseSpeed = 0.5f;
-    private const float SlowSown = 0.2f;
+    private const float BaseSpeed = 0.3f;
+    private const float SlowSown = 0.3f;
+
+    public Sprite[] sprites = new Sprite[3];
+    private SpriteRenderer spriteRenterer;
+    private IEnumerator<Sprite> currentSprite;
 
     public KeyCode lbName;
     public KeyCode rbName;
@@ -22,6 +26,12 @@ public class Player : MonoBehaviour
     private PlayerState state = PlayerState.None;
 
     public float PositionX { get; private set; }
+
+    private void Start()
+    {
+        spriteRenterer = GetComponent<SpriteRenderer>();
+        currentSprite = ChangeSprite();
+    }
 
     private void Update()
     {
@@ -52,6 +62,8 @@ public class Player : MonoBehaviour
                     timer = 0;
                     break;
             }
+            currentSprite.MoveNext();
+            spriteRenterer.sprite = currentSprite.Current;
         }
         else if (Input.GetKeyDown(rbName))
         {
@@ -72,6 +84,8 @@ public class Player : MonoBehaviour
                     timer = 0;
                     break;
             }
+            currentSprite.MoveNext();
+            spriteRenterer.sprite = currentSprite.Current;
         }
         
         if (state != PlayerState.None)
@@ -83,6 +97,17 @@ public class Player : MonoBehaviour
         }
         slowdownTimer += Time.deltaTime;
     }
+
+    private IEnumerator<Sprite> ChangeSprite()
+    {
+        while (true)
+        {
+            yield return sprites[0];
+            yield return sprites[1];
+            yield return sprites[0];
+            yield return sprites[2];
+        }
+    }
      
     private float CalculateAcseleration(float deltaTime)
     {
@@ -90,6 +115,6 @@ public class Player : MonoBehaviour
         var diviation = x / StepTime;
         if (diviation == 0) return BaseSpeed;
         var acc = Mathf.Clamp(BaseSpeed / diviation, 0, BaseSpeed);
-        return acc - SlowSown;
+        return acc;
     }
 }

@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        if (menu == null) return;
         Time.timeScale = 0;
 	}
 

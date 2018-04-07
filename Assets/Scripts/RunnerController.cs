@@ -6,9 +6,25 @@ using UnityEngine;
 
 public class RunnerController : MonoBehaviour
 {
+    public float speedEditorControl = 1;
+    private float _moveSpeed = 1;
+
+    public float MoveSpeed
+    {
+        get { return _moveSpeed; }
+        set
+        {
+            if (_moveSpeed == value) return;
+            _moveSpeed = value;
+            foreach (var chunk in _currentChunks)
+            {
+                chunk.moveSpeed = _moveSpeed;
+            }
+        }
+    }
 
     public Transform _chunkPrefab;
-    private Transform[] _currentChunks = new Transform[3];
+    private Chunk[] _currentChunks = new Chunk[3];
     private Transform currentChunk;
     private float chunkSize = 13.52f;
 
@@ -24,20 +40,18 @@ public class RunnerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        /*foreach (var ch in _currentChunks)
-        {
-            ch.transform.Translate(new Vector2(-_moveSpeed * Time.deltaTime, 0));
-        }*/
+        MoveSpeed = speedEditorControl;
     }
 
     private void CreateChunk(int idx, Vector2 pos)
     {
         var newChunk = Instantiate(_chunkPrefab, pos, Quaternion.identity);
-        newChunk.GetComponent<Chunk>().BecameInvisible += DeleteAndSpawnChunk;
-        _currentChunks[idx] = newChunk;
+        var chunkComponent = newChunk.GetComponent<Chunk>();
+        chunkComponent.moveSpeed = _moveSpeed;
+        chunkComponent.BecameInvisible += DeleteAndSpawnChunk;
+        _currentChunks[idx] = chunkComponent;
     }
 
     private void DeleteAndSpawnChunk(object sender, EventArgs args)

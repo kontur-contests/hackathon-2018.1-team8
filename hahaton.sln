@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hahaton", "Assembly-CSharp.csproj", "{BF9C35A4-ED8F-72E2-CCCC-7FF1B298D47E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hahaton", "Assembly-CSharp-firstpass.csproj", "{D93CC61B-9FF9-3106-24F6-4D640488D5A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF9C35A4-ED8F-72E2-CCCC-7FF1B298D47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF9C35A4-ED8F-72E2-CCCC-7FF1B298D47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF9C35A4-ED8F-72E2-CCCC-7FF1B298D47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF9C35A4-ED8F-72E2-CCCC-7FF1B298D47E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D93CC61B-9FF9-3106-24F6-4D640488D5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D93CC61B-9FF9-3106-24F6-4D640488D5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D93CC61B-9FF9-3106-24F6-4D640488D5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D93CC61B-9FF9-3106-24F6-4D640488D5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public Sprite[] sprites = new Sprite[3];
     private SpriteRenderer spriteRenterer;
     private IEnumerator<Sprite> currentSprite;
+    private PlayerAudioSource audioSource;
 
     public KeyCode lbName;
     public KeyCode rbName;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
 
     public void DisableRun(float time)
     {
+        audioSource.PlayClip("hit");
         StartCoroutine(DisableRunCorutine(time));
     }
 
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour
         currentSprite = ChangeSprite();
         StartCoroutine(SlowDown());
         PositionX = transform.position.x;
+        audioSource = transform.Find("PlayerAudioSource").GetComponent<PlayerAudioSource>();
     }
 
     private void Update()
@@ -85,6 +88,7 @@ public class Player : MonoBehaviour
                     state = PlayerState.LeftStep;
                     currentSprite.MoveNext();
                     spriteRenterer.sprite = currentSprite.Current;
+                    audioSource.PlayClip("step1", 0.15f);
                     break;
                 case PlayerState.None:
                     state = PlayerState.LeftStep;
@@ -103,6 +107,7 @@ public class Player : MonoBehaviour
                     state = PlayerState.RightStep;
                     currentSprite.MoveNext();
                     spriteRenterer.sprite = currentSprite.Current;
+                    audioSource.PlayClip("step2", 0.15f);
                     break;
                 case PlayerState.RightStep:
                     //Мы нажали кнопку дважды

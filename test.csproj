@@ -246,6 +246,7 @@
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerAudioSource.cs" />
     <Compile Include="Assets\Scripts\PlayerStatisticController.cs" />
     <Compile Include="Assets\Scripts\ResultTableController.cs" />
     <Compile Include="Assets\Scripts\RunnerController.cs" />

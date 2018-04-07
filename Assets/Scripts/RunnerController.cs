@@ -36,7 +36,6 @@ public class RunnerController : MonoBehaviour
         {
             var newChunkPos = new Vector2(pos.x + chunkSize * i, pos.y);
             CreateChunk(i, newChunkPos);
-
         }
     }
 

@@ -51,3 +51,6 @@ TagManager:
   - name: Cactuses
     uniqueID: 2348555455
     locked: 0
+  - name: Info
+    uniqueID: 231305287
+    locked: 0

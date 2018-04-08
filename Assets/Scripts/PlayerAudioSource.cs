@@ -27,6 +27,7 @@ public class PlayerAudioSource : MonoBehaviour
     {
         source.volume = volume;
         source.clip = items.FirstOrDefault(a => a.Name == name).Clip;
-        source.Play();
+        if (gameObject.activeInHierarchy)
+            source.Play();
     }
 }

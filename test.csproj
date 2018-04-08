@@ -253,6 +253,7 @@
     <Compile Include="Assets\Scripts\ResultTableController.cs" />
     <Compile Include="Assets\Scripts\RunnerController.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\TribuneBannerController.cs" />
     <Compile Include="Assets\Scripts\WinTrigger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

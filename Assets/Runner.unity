@@ -218,7 +218,7 @@ Prefab:
     - target: {fileID: 114193431665140408, guid: f64ad637adeead84dba2cc12b489b16e,
         type: 2}
       propertyPath: NextScene
-      value: RunnerFixed
+      value: FixedObstecleRunner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f64ad637adeead84dba2cc12b489b16e, type: 2}

@@ -245,11 +245,14 @@
     <Compile Include="Assets\Scripts\CactusSpawner.cs" />
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\LooseTrigger.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAudioSource.cs" />
     <Compile Include="Assets\Scripts\PlayerStatisticController.cs" />
     <Compile Include="Assets\Scripts\ResultTableController.cs" />
     <Compile Include="Assets\Scripts\RunnerController.cs" />
+    <Compile Include="Assets\Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\WinTrigger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

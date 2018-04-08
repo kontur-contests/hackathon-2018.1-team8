@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212866290427340054}
   - component: {fileID: 114186501931857288}
   - component: {fileID: 114078844319167772}
+  - component: {fileID: 50674611313611932}
   m_Layer: 8
   m_Name: Player
   m_TagString: Playable
@@ -73,6 +74,26 @@ Transform:
   m_Father: {fileID: 4003041124423656}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50674611313611932
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222658833085100}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!82 &82607959901865500
 AudioSource:
   m_ObjectHideFlags: 1
@@ -164,7 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4cac3b9f64204ba495bccc7b5267f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Player 1
+  playerName: 
+  id: 0
+  info:
+    name: 
+    score: 0
 --- !u!114 &114173182905816756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,6 +210,8 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: bd6e15cb7ead68a4c9a59b0a7c9cd2aa, type: 3}
   - Name: step2
     Clip: {fileID: 8300000, guid: 4aa47e86ce0be3345b60c84cef26cccd, type: 3}
+  - Name: jump
+    Clip: {fileID: 8300000, guid: 2fdb3d942bac2a441ab088b248763580, type: 3}
 --- !u!114 &114186501931857288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,6 +227,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 904cdc3dd0a8a8b4d838527cc6ee1443, type: 3}
   - {fileID: 21300000, guid: 1dc567dc02645534ba01ca9d3a6f0f46, type: 3}
   - {fileID: 21300000, guid: daa597f9663187e4fb1d5ab7179699b2, type: 3}
+  cacheStartPosition: {x: 0, y: 0, z: 0}
   lbName: 97
   rbName: 115
 --- !u!212 &212866290427340054

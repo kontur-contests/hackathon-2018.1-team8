@@ -17,8 +17,8 @@ public class PlayerInfo {
 public class PlayerStatisticController : MonoBehaviour {
 
 	
-    public EventHandler onDie;
-    public EventHandler onWin;
+    public event EventHandler onDie;
+    public event EventHandler onWin;
 	public string playerName;
 	public int id;
 
@@ -28,10 +28,20 @@ public class PlayerStatisticController : MonoBehaviour {
 	void Start() {
 		info = new PlayerInfo(playerName, 0);
 	}
-	void Update () {
+
+    public void Die()
+    {
+        onDie(gameObject, null);
+    }
+
+    public void Win()
+    {
+        onWin(gameObject, null);
+    }
+    /*void Update () {
         if (transform.position.x < -5f)
-            onDie(gameObject, null);
+            
         else if (transform.position.x > 10.5f)
-            onWin(gameObject, null);
-	}
+            
+	}*/
 }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212513070348191396}
   - component: {fileID: 114413175068455596}
   - component: {fileID: 114847289717824004}
+  - component: {fileID: 50590430386400674}
   m_Layer: 8
   m_Name: Player (3)
   m_TagString: Playable
@@ -73,6 +74,26 @@ Transform:
   m_Father: {fileID: 4354637641835072}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50590430386400674
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435795851728014}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!82 &82162559139756420
 AudioSource:
   m_ObjectHideFlags: 1
@@ -169,8 +190,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 86ef428216548a54784f9f660a007bb7, type: 3}
   - {fileID: 21300000, guid: 17620fe2acdd65441a345d1e2fc55ef7, type: 3}
   cacheStartPosition: {x: 0, y: 0, z: 0}
-  lbName: 276
-  rbName: 275
+  lbName: 258
+  rbName: 259
 --- !u!114 &114744054294993666
 MonoBehaviour:
   m_ObjectHideFlags: 1

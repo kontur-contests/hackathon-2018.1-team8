@@ -18,7 +18,6 @@ public class Cactus : MonoBehaviour {
         //Debug.Log(player.IsJumping);
 		if (deltax < radius && !player.IsJumping)
         {
-            Debug.Log("Colide with player!");
             player.DisableRun(2.5f);
         }
         transform.Translate(new Vector2(-speed * Time.deltaTime, 0));

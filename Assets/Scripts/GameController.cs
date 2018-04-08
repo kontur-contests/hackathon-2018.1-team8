@@ -8,11 +8,9 @@ public class GameController : MonoBehaviour {
 
     public static GameController Instance;
     public RunnerController trackController;
-    public GameObject resultTable;
-    public List<Player> players = new List<Player>();
-    public int[] userScores = new int[4];
+    /*public GameObject resultTable;
     public Canvas startMenu;
-    public Canvas finishMenu;
+    public Canvas finishMenu;*/
 
     private void Awake()
     {
@@ -27,13 +25,13 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        if (startMenu == null) return;
+        /*if (startMenu == null) return;
         if (finishMenu == null) return;
         Time.timeScale = 0;
-        InitPlayers();
+        InitPlayers();*/
 	}
 
-    void InitPlayers() {
+    /*void InitPlayers() {
         players = GameObject.FindGameObjectsWithTag("Playable")
             .Select(pgo => pgo.GetComponent<Player>())
             .ToList();
@@ -43,21 +41,17 @@ public class GameController : MonoBehaviour {
             statController.onWin += addPlayerToStat;
         }
         finishMenu.gameObject.SetActive(false);
-    }
+    }*/
 
-    public void StartNewGame()
+    /*public void StartNewGame()
     {
-        foreach (Player player in players) {
-            player.gameObject.SetActive(true);
-            player.Reset();
-        }
         Time.timeScale = 1;
         startMenu.gameObject.SetActive(false);
         finishMenu.gameObject.SetActive(false);
         InitPlayers();
-    }
+    }*/
 
-    public void RestartGame()
+    /*public void RestartGame()
     {
         foreach (Player player in players) {
             player.gameObject.SetActive(true);
@@ -87,7 +81,7 @@ public class GameController : MonoBehaviour {
             resultTable.GetComponent<ResultTableController>().results = userScores;
             resultTable.GetComponent<ResultTableController>().ShowStatistics();
         }
-    }
+    }*/
 
     
     /*private void ShowTableResults() {

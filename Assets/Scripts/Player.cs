@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
             {
                 vSpeed = JumpForce;
                 IsJumping = true;
+                audioSource.PlayClip("jump", 0.15f);
             }
         }
         else if (Input.GetKeyDown(lbName))

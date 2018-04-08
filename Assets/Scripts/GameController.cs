@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -149,5 +150,10 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	IEnumerator WaitForSecond() {
         yield return new WaitForSeconds(1);
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene(0);            
     }
 }

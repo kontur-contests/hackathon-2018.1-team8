@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FixedObstecleRunner.unity
     guid: 6e347e0b21fa33147818f9adf738fbce
+  - enabled: 1
+    path: Assets/ObstecleRunnerHard.unity
+    guid: 473ef1fec685b46449eeed2d453dc43b

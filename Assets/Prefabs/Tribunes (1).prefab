@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4175380452279564}
   - component: {fileID: 212206279669883280}
   - component: {fileID: 114466052135081754}
+  - component: {fileID: 114562172930393740}
   m_Layer: 0
   m_Name: Tribunes (1)
   m_TagString: Untagged
@@ -54,6 +55,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   _deleteEge: -15
+--- !u!114 &114562172930393740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1289766924737268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c4b354ebb424346a6ef7e15ce4cb23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  banners:
+  - {fileID: 4120255914992678, guid: 175bd5a0ca64dd64faf91fe2015dc3ce, type: 2}
+  - {fileID: 4124560828325650, guid: e4ed53cfba332f9428f66eb76fb8ba53, type: 2}
+  - {fileID: 4833598468503468, guid: 799540faa6d53f9458ff55596c5175f3, type: 2}
+  - {fileID: 4468842228820516, guid: 16fe0e4cbb01e1d48a3fd47931506a4e, type: 2}
 --- !u!212 &212206279669883280
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\ResultTableController.cs" />
      <Compile Include="Assets\Scripts\RunnerController.cs" />
      <Compile Include="Assets\Scripts\SceneController.cs" />
+     <Compile Include="Assets\Scripts\TribuneBannerController.cs" />
      <Compile Include="Assets\Scripts\WinTrigger.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

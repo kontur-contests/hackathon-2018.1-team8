@@ -38,7 +38,8 @@ public class Player : MonoBehaviour
     public void DisableRun(float time)
     {
         audioSource.PlayClip("hit");
-        StartCoroutine(DisableRunCorutine(time));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(DisableRunCorutine(time));
     }
 
     private IEnumerator DisableRunCorutine(float time)

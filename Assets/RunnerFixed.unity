@@ -551,12 +551,12 @@ Prefab:
     - target: {fileID: 114099785360682406, guid: afe59e8b4dba1da41b9e13fcfd369841,
         type: 2}
       propertyPath: lbName
-      value: 276
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 114099785360682406, guid: afe59e8b4dba1da41b9e13fcfd369841,
         type: 2}
       propertyPath: rbName
-      value: 275
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 114099785360682406, guid: afe59e8b4dba1da41b9e13fcfd369841,
         type: 2}

@@ -55,12 +55,15 @@
      <Compile Include="Assets\Scripts\CactusSpawner.cs" />
      <Compile Include="Assets\Scripts\Chunk.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\LooseTrigger.cs" />
+     <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerAudioSource.cs" />
      <Compile Include="Assets\Scripts\PlayerStatisticController.cs" />
      <Compile Include="Assets\Scripts\ResultTableController.cs" />
      <Compile Include="Assets\Scripts\RunnerController.cs" />
      <Compile Include="Assets\Scripts\SceneController.cs" />
+     <Compile Include="Assets\Scripts\WinTrigger.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

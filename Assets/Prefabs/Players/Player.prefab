@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  id: 0
+  id: 1
   info:
     name: 
     score: 0

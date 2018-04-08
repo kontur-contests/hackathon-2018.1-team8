@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
     public string NextScene;
     public SpriteRenderer countDownRenderer;
     public Sprite[] countDown = new Sprite[3];
+    public Text winnerText;
     private PlayerAudioSource audioSource;
     private AudioSource music;
 
@@ -73,8 +75,22 @@ public class SceneController : MonoBehaviour
 
     private void CheckEndGame()
     {
-        if (players.Count(p => p.gameObject.activeInHierarchy) <= 1)
+        var activePlayers = players.Where(p => p.gameObject.activeInHierarchy);
+        if (activePlayers.Count() <= 1)
         {
+            var lastPlayer = activePlayers.FirstOrDefault();
+            if (lastPlayer != null)
+            {
+                for (int i = 0; i < leaderBoard.Length; i++)
+                {
+                    if (leaderBoard[i] == null)
+                    {
+                        leaderBoard[i] = lastPlayer;
+                        lastPlayer.gameObject.SetActive(false);
+                        break;
+                    }
+                }
+            }
             FinishGame();
         }
     }
@@ -100,6 +116,8 @@ public class SceneController : MonoBehaviour
 
     public void FinishGame()
     {
+        var winnerNum = leaderBoard[0].GetComponent<PlayerStatisticController>().id;
+        winnerText.text = "Winner: Player " + winnerNum.ToString();
         Time.timeScale = 0;
         endMenu.gameObject.SetActive(true);
     }
@@ -124,6 +142,10 @@ public class SceneController : MonoBehaviour
         audioSource.PlayClip("pistol");
         music.Play();
         countDownRenderer.gameObject.SetActive(false);
+        foreach (var pl in players)
+        {
+            pl.Reset();
+        }
         Time.timeScale = 1;
     }
 }

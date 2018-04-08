@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  id: 3
+  id: 4
   info:
     name: undefined
     score: 0

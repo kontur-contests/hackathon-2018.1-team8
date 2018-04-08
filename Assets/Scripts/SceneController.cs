@@ -108,6 +108,13 @@ public class SceneController : MonoBehaviour
             player.gameObject.SetActive(true);
             player.Reset();
         }
+        var cactuses = GameObject.FindGameObjectsWithTag("Cactus");
+        if (cactuses.Any()) {
+            foreach (var cactus in cactuses) {
+                Destroy(cactus);
+            }
+        }
+        
         leaderBoard = new Player[4];
         startMenu.gameObject.SetActive(false);
         endMenu.gameObject.SetActive(false);

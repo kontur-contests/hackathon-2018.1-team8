@@ -10,8 +10,8 @@ public enum PlayerState
 public class Player : MonoBehaviour
 {
     private const float OptimalDeltaTime = 0.2f;
-    private const float StepTime = 0.2f; //допустимая погрешность для игрока
-    private const float BaseSpeed = 0.4f;
+    private const float StepTime = 0.1f; //допустимая погрешность для игрока
+    private const float BaseSpeed = 0.5f;
     private const float SlowSown = 0.3f;
     private const float JumpForce = 12;
     private const float Gravity = 60;
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
         PositionX = cacheStartPosition.x;
         StartCoroutine(SlowDown());
         IsJumping = false;
+        runDisabled = false;
     }
 
     private void Step()

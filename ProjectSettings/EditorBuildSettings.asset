@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RunnerWithObsticles.unity
     guid: bf4fd693c0455d147abf31491ecc015d
+  - enabled: 1
+    path: Assets/RunnerFixed.unity
+    guid: 74a62e99fc1ceb348b5b95977b87a4a6
